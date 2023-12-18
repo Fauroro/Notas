@@ -28,13 +28,18 @@ while (isActive) :
         elif (opMenu == 2):
             opNotas = 0
             isActiveGrades = True
-            codigo = input("Ingrese el codigo del Estudiante del cual va a registrar las notas: ")
-            for item in alumnos:
-                if codigo in item:
-                    indice=alumnos.index(item)
-                    print(f"{alumnos[indice][0]}\t{alumnos[indice][1]}")                    
-            os.system("pause")
-            print("Seleccione cual nota desea ingresar: ")
+            if len(alumnos)==0:
+                isActiveGrades=False
+                print("No se cuenta con registros de estudiantes, por favor registre un estudiante para poder ingresar las notas")
+                os.system("pause")
+            else:
+                codigo = input("Ingrese el codigo del Estudiante del cual va a registrar las notas: ")
+                for item in alumnos:
+                    if codigo in item:
+                        indice=alumnos.index(item)
+                        print(f"{alumnos[indice][0]}\t{alumnos[indice][1]}")                    
+                os.system("pause")
+                print("Seleccione cual nota desea ingresar: ")
             while (isActiveGrades):
                 for i,item in enumerate(subMenuNotas):
                     print(f"{i+1}. {item}")
